@@ -1,0 +1,16 @@
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+
+      - name: Publish package to hex.pm
+        uses: tmecklem/action-publish-hex@v2
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
