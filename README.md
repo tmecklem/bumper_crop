@@ -1,11 +1,9 @@
 # BumperCrop
 
-**TODO: Add description**
+bumper_crop is a client llibrary for Elixir to communicate with Harvest
+(getharvest.com) via the v2 API.
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `bumper_crop` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +13,5 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/bumper_crop>.
+The docs can be found at <https://hexdocs.pm/bumper_crop>.
 
