@@ -21,10 +21,9 @@ defmodule BumperCrop.Report.Time do
         Timex.now() |> Timex.shift(weeks: -1) |> Timex.beginning_of_week(:sun)
       )
 
-    to =
-      Keyword.get(opts, :from, Timex.now() |> Timex.shift(weeks: -1) |> Timex.end_of_week(:sun))
+    to = Keyword.get(opts, :to, Timex.now() |> Timex.shift(weeks: -1) |> Timex.end_of_week(:sun))
 
-    per_page = Keyword.get(opts, :from, @max_per_page)
+    per_page = Keyword.get(opts, :per_page, @max_per_page)
 
     client
     |> get("/reports/time/team",
