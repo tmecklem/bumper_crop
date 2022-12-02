@@ -29,8 +29,14 @@ defmodule BumperCrop.MixProject do
   defp deps do
     [
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:decimal, "~> 2.0"},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:jason, "~> 1.3"},
+      {:plug_cowboy, ">= 1.0.0", optional: true},
+      {:tesla, "~> 1.0"},
+      {:timex, "~> 3.7"},
+      {:typed_struct, "~> 0.3.0"}
     ]
   end
 
