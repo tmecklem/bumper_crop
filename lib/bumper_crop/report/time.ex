@@ -1,6 +1,6 @@
 defmodule BumperCrop.Report.Time do
   @moduledoc """
-  This module encapsulates calls to the Rippling time report resources API
+  This module encapsulates calls to the Harvest time report resources API
   """
 
   @max_per_page 200
@@ -11,7 +11,7 @@ defmodule BumperCrop.Report.Time do
   alias BumperCrop.UserResult
   alias Tesla.Client
 
-  @callback list_employees(Client.t()) :: {:ok, list(UserResult.t())}
+  @callback get_team_time_report(Client.t(), list()) :: {:ok, list(UserResult.t())}
 
   def get_team_time_report(%Client{} = client, opts \\ []) do
     from =

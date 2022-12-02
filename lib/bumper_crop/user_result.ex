@@ -1,6 +1,6 @@
 defmodule BumperCrop.UserResult do
   @moduledoc """
-  This struct represents an Employee in Rippling
+  This struct represents a user in Harvest time reports
   """
 
   use TypedStruct

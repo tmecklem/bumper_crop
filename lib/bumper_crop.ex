@@ -7,6 +7,8 @@ defmodule BumperCrop do
 
   defdelegate get_team_time_report(client, opts), to: BumperCrop.Report.Time
   defdelegate get_team_time_report(client), to: BumperCrop.Report.Time
+  defdelegate list_all_projects(client, opts), to: BumperCrop.Projects
+  defdelegate list_all_projects(client), to: BumperCrop.Projects
 
   def client(api_token, account_id, base_url, opts \\ []) do
     user_agent = Keyword.get(opts, :user_agent, "BumperCrop")
