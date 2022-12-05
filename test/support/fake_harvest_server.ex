@@ -8,7 +8,8 @@ defmodule BumperCrop.FakeHarvestServer do
 
   import BumperCrop.{
     FakeTimeReportsApiHandler,
-    FakeProjectsApiHandler
+    FakeProjectsApiHandler,
+    FakeUsersApiHandler
   }
 
   plug(:match)
@@ -25,6 +26,12 @@ defmodule BumperCrop.FakeHarvestServer do
     conn
     |> put_resp_header("content-type", "application/json;charset=utf-8")
     |> handle_get_team_time_report(conn.params)
+  end
+
+  get "/v2/users" do
+    conn
+    |> put_resp_header("content-type", "application/json;charset=utf-8")
+    |> handle_list_all_users(conn.params)
   end
 
   get "/v2/projects" do
