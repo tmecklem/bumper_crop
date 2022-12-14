@@ -7,8 +7,9 @@ defmodule BumperCrop.FakeHarvestServer do
   use Plug.Router
 
   import BumperCrop.{
-    FakeTimeReportsApiHandler,
     FakeProjectsApiHandler,
+    FakeTasksApiHandler,
+    FakeTimeReportsApiHandler,
     FakeUsersApiHandler
   }
 
@@ -38,6 +39,12 @@ defmodule BumperCrop.FakeHarvestServer do
     conn
     |> put_resp_header("content-type", "application/json;charset=utf-8")
     |> handle_list_all_projects(conn.params)
+  end
+
+  get "/v2/tasks" do
+    conn
+    |> put_resp_header("content-type", "application/json;charset=utf-8")
+    |> handle_list_all_tasks(conn.params)
   end
 
   match _ do
