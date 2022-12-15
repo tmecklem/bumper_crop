@@ -9,6 +9,7 @@ defmodule BumperCrop.FakeHarvestServer do
   import BumperCrop.{
     FakeProjectsApiHandler,
     FakeTasksApiHandler,
+    FakeTimeEntriesApiHandler,
     FakeTimeReportsApiHandler,
     FakeUsersApiHandler
   }
@@ -23,28 +24,34 @@ defmodule BumperCrop.FakeHarvestServer do
 
   plug(:dispatch)
 
-  get "/v2/reports/time/team" do
-    conn
-    |> put_resp_header("content-type", "application/json;charset=utf-8")
-    |> handle_get_team_time_report(conn.params)
-  end
-
-  get "/v2/users" do
-    conn
-    |> put_resp_header("content-type", "application/json;charset=utf-8")
-    |> handle_list_all_users(conn.params)
-  end
-
   get "/v2/projects" do
     conn
     |> put_resp_header("content-type", "application/json;charset=utf-8")
     |> handle_list_all_projects(conn.params)
   end
 
+  get "/v2/reports/time/team" do
+    conn
+    |> put_resp_header("content-type", "application/json;charset=utf-8")
+    |> handle_get_team_time_report(conn.params)
+  end
+
   get "/v2/tasks" do
     conn
     |> put_resp_header("content-type", "application/json;charset=utf-8")
     |> handle_list_all_tasks(conn.params)
+  end
+
+  get "/v2/time_entries" do
+    conn
+    |> put_resp_header("content-type", "application/json;charset=utf-8")
+    |> handle_list_all_time_entries(conn.params)
+  end
+
+  get "/v2/users" do
+    conn
+    |> put_resp_header("content-type", "application/json;charset=utf-8")
+    |> handle_list_all_users(conn.params)
   end
 
   match _ do

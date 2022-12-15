@@ -11,6 +11,8 @@ defmodule BumperCrop do
   defdelegate list_all_projects(client), to: BumperCrop.Projects
   defdelegate list_all_tasks(client, opts), to: BumperCrop.Tasks
   defdelegate list_all_tasks(client), to: BumperCrop.Tasks
+  defdelegate list_all_time_entries(client, opts), to: BumperCrop.TimeEntries
+  defdelegate list_all_time_entries(client), to: BumperCrop.TimeEntries
   defdelegate list_all_users(client, opts), to: BumperCrop.Users
   defdelegate list_all_users(client), to: BumperCrop.Users
 
