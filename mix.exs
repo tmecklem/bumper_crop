@@ -10,7 +10,7 @@ defmodule BumperCrop.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       package: package(),
       start_permanent: Mix.env() == :prod,
-      version: "0.1.3"
+      version: "0.1.4"
     ]
   end
 
