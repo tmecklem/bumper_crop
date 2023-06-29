@@ -7,8 +7,8 @@ defmodule BumperCrop do
 
   defdelegate get_team_time_report(client), to: BumperCrop.Report.Time
   defdelegate get_team_time_report(client, opts), to: BumperCrop.Report.Time
-  defdelegate list_all_clients(client), to: BumperCrop.Users
-  defdelegate list_all_clients(client, opts), to: BumperCrop.Users
+  defdelegate list_all_clients(client), to: BumperCrop.Clients
+  defdelegate list_all_clients(client, opts), to: BumperCrop.Clients
   defdelegate list_all_projects(client), to: BumperCrop.Projects
   defdelegate list_all_projects(client, opts), to: BumperCrop.Projects
   defdelegate list_all_tasks(client), to: BumperCrop.Tasks
