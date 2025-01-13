@@ -8,11 +8,13 @@ defmodule BumperCrop.Invoices.ListAllInvoicesTest do
   }
 
   describe "list_all_invoices" do
-    test "it forms a correct request and returns a list of invoices with pagination", %{client: client} do
+    test "it forms a correct request and returns a list of invoices with pagination", %{
+      client: client
+    } do
       assert {:ok,
               [
                 %Invoice{
-                  id: 13150403,
+                  id: 13_150_403,
                   client_key: "21312da13d457947a217da6775477afee8c2eba8",
                   number: "1001",
                   purchase_order: "",
