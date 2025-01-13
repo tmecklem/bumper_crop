@@ -12,53 +12,28 @@ defmodule BumperCrop.Invoices do
 
   @callback list_all_invoices(Client.t(), list()) :: {:ok, list(Invoice.t())}
 
+  defp add_query_param(query, _opts, nil), do: query
+  defp add_query_param(query, opts, param), do: add_param_if_present(query, opts, param)
+
+  defp add_param_if_present(query, opts, param) do
+    case Keyword.has_key?(opts, param) do
+      true -> query ++ [{param, Keyword.get(opts, param)}]
+      false -> query
+    end
+  end
+
   def list_all_invoices(%Client{} = client, opts \\ []) do
     per_page = Keyword.get(opts, :per_page, @max_per_page)
 
     query =
       [per_page: per_page]
-      |> then(fn query ->
-        case Keyword.has_key?(opts, :client_id) do
-          true -> query ++ [client_id: Keyword.get(opts, :client_id)]
-          _ -> query
-        end
-      end)
-      |> then(fn query ->
-        case Keyword.has_key?(opts, :project_id) do
-          true -> query ++ [project_id: Keyword.get(opts, :project_id)]
-          _ -> query
-        end
-      end)
-      |> then(fn query ->
-        case Keyword.has_key?(opts, :updated_since) do
-          true -> query ++ [updated_since: Keyword.get(opts, :updated_since)]
-          _ -> query
-        end
-      end)
-      |> then(fn query ->
-        case Keyword.has_key?(opts, :from) do
-          true -> query ++ [from: Keyword.get(opts, :from)]
-          _ -> query
-        end
-      end)
-      |> then(fn query ->
-        case Keyword.has_key?(opts, :to) do
-          true -> query ++ [to: Keyword.get(opts, :to)]
-          _ -> query
-        end
-      end)
-      |> then(fn query ->
-        case Keyword.has_key?(opts, :state) do
-          true -> query ++ [state: Keyword.get(opts, :state)]
-          _ -> query
-        end
-      end)
-      |> then(fn query ->
-        case Keyword.has_key?(opts, :page) do
-          true -> query ++ [page: Keyword.get(opts, :page)]
-          _ -> query
-        end
-      end)
+      |> add_query_param(opts, :client_id)
+      |> add_query_param(opts, :project_id)
+      |> add_query_param(opts, :updated_since)
+      |> add_query_param(opts, :from)
+      |> add_query_param(opts, :to)
+      |> add_query_param(opts, :state)
+      |> add_query_param(opts, :page)
 
     client
     |> get("/invoices", query: query)
