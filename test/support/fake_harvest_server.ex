@@ -8,6 +8,7 @@ defmodule BumperCrop.FakeHarvestServer do
 
   import BumperCrop.{
     FakeClientsApiHandler,
+    FakeInvoicesApiHandler,
     FakeProjectsApiHandler,
     FakeTasksApiHandler,
     FakeTimeEntriesApiHandler,
@@ -59,6 +60,12 @@ defmodule BumperCrop.FakeHarvestServer do
     conn
     |> put_resp_header("content-type", "application/json;charset=utf-8")
     |> handle_list_all_users(conn.params)
+  end
+
+  get "/v2/invoices" do
+    conn
+    |> put_resp_header("content-type", "application/json;charset=utf-8")
+    |> handle_list_all_invoices(conn.params)
   end
 
   match _ do

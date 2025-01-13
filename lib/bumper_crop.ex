@@ -17,6 +17,8 @@ defmodule BumperCrop do
   defdelegate list_all_time_entries(client, opts), to: BumperCrop.TimeEntries
   defdelegate list_all_users(client), to: BumperCrop.Users
   defdelegate list_all_users(client, opts), to: BumperCrop.Users
+  defdelegate list_all_invoices(client), to: BumperCrop.Invoices
+  defdelegate list_all_invoices(client, opts), to: BumperCrop.Invoices
 
   def client(api_token, account_id, base_url, opts \\ []) do
     user_agent = Keyword.get(opts, :user_agent, "BumperCrop")
