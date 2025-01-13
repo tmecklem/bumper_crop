@@ -53,6 +53,12 @@ defmodule BumperCrop.Invoices do
           _ -> query
         end
       end)
+      |> then(fn query ->
+        case Keyword.has_key?(opts, :page) do
+          true -> query ++ [page: Keyword.get(opts, :page)]
+          _ -> query
+        end
+      end)
 
     client
     |> get("/invoices", query: query)

@@ -8,7 +8,7 @@ defmodule BumperCrop.Invoices.ListAllInvoicesTest do
   }
 
   describe "list_all_invoices" do
-    test "it forms a correct request and returns a list of invoices", %{client: client} do
+    test "it forms a correct request and returns a list of invoices with pagination", %{client: client} do
       assert {:ok,
               [
                 %Invoice{
@@ -35,7 +35,7 @@ defmodule BumperCrop.Invoices.ListAllInvoicesTest do
                   currency: "EUR"
                 }
                 | _
-              ]} = Invoices.list_all_invoices(client, per_page: 2000)
+              ]} = Invoices.list_all_invoices(client, per_page: 2000, page: 1)
     end
   end
 end
